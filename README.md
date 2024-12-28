@@ -1,7 +1,7 @@
 # Coworking Space Service Extension
 The Coworking Space Service is a set of APIs that enables users to request one-time tokens and administrators to authorize access to a coworking space. This service follows a microservice pattern and the APIs are split into distinct services that can be deployed and managed independently of one another.
 
-The API provides business analysts basic analytics data on user activity in the service. This project builds a pipeline using AWS CodeBuild, builds and pushes a docker image into AWS ECR and deploys it in Kubernetes.
+This API provides business analysts basic analytics data on user activity in the service. This project builds a pipeline using AWS CodeBuild, builds and pushes a docker image into AWS ECR and deploys it in Kubernetes.
 
 ## Getting Started
 
