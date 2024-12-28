@@ -25,12 +25,17 @@ Set up a Postgres database using a Helm Chart.
 
 1. Set up Bitnami Repo
 ```bash
-helm repo add <REPO_NAME> https://charts.bitnami.com/bitnami
+helm repo add <REPO_NAME> oci://registry-1.docker.io/bitnamicharts
 ```
 
 2. Install PostgreSQL Helm Chart
 ```
 helm install <SERVICE_NAME> <REPO_NAME>/postgresql
+```
+
+Alternatively you can combine steps 1 & 2 as such:
+```bash
+helm install <SERVICE_NAME> oci://registry-1.docker.io/bitnamicharts/postgresql
 ```
 
 This should set up a Postgre deployment at `<SERVICE_NAME>-postgresql.default.svc.cluster.local` in your Kubernetes cluster. You can verify it by running `kubectl svc`
