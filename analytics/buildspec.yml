@@ -9,10 +9,12 @@ phases:
     commands:
       - echo Starting build at `date`
       - echo Building the Docker image...          
-      - docker build -t $IMAGE_REPO_NAME -f analytics/Dockerfile analytics/
-      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $IMAGE_REPO_URI/$IMAGE_REPO_NAME:$IMAGE_TAG      
+      - docker build -t $IMAGE_REPO_NAME:$CODEBUILD_BUILD_NUMBER -f analytics/Dockerfile analytics/
+      - docker tag $IMAGE_REPO_NAME:$CODEBUILD_BUILD_NUMBER $IMAGE_REPO_URI/$IMAGE_REPO_NAME:$CODEBUILD_BUILD_NUMBER
   post_build:
     commands:
       - echo Completed build at `date`
       - echo Pushing the Docker image...
-      - docker push $IMAGE_REPO_URI/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - docker push $IMAGE_REPO_URI/$IMAGE_REPO_NAME:$CODEBUILD_BUILD_NUMBER
+      - echo Updating Kubernetes deployment...
+      - kubectl set image deployment/coworking coworking=public.ecr.aws/l2t4g5t0/kev-udacity-coworking:$CODEBUILD_BUILD_NUMBER --record
