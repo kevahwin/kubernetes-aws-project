@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: coworking
-        image: public.ecr.aws/l2t4g5t0/kev-udacity-coworking:latest
+        image: public.ecr.aws/l2t4g5t0/kev-udacity-coworking:11
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
