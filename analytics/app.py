@@ -21,12 +21,14 @@ def health_check():
 @app.route("/readiness_check")
 def readiness_check():
     try:
-        count = db.session.query(Token).count()
+        result = db.session.execute("SELECT 1")  # Just a simple query to check DB availability
+        count = result.fetchone()[0]  # This should return '1' if the DB is connected
     except Exception as e:
         app.logger.error(e)
         return "failed", 500
     else:
         return "ok"
+
 
 
 def get_daily_visits():
