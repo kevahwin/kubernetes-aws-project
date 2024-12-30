@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: coworking-service
+spec:
+  selector:
+    service: coworking
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5153

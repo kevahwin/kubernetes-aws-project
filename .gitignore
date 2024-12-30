@@ -1,2 +1,2 @@
-deployment/db/postgres-secret.yaml
+# deployment/db/postgres-secret.yaml
 __pycache__/
